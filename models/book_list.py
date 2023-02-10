@@ -13,7 +13,6 @@ def delete_book(title, list=book_list):
         if title == book.title:
             list.remove(book)
 
-
 def delete_book_index(index, list=book_list):
     list.pop(index)
 
