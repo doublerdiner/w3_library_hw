@@ -22,7 +22,7 @@ class TestBook(unittest.TestCase):
 # Testing a book can be deleted from the book_list
     def test_book_can_be_deleted(self):
         book_list = [book_1, book_2, book_3, book_4, book_5]
-        delete_book("The Shining", book_list)
+        delete_book(book_1, book_list)
         self.assertEqual(4, len(book_list))
         
     def test_book_can_be_deleted_by_index(self):

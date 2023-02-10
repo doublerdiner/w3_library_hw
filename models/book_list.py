@@ -8,10 +8,8 @@ book_5 = Book("The Bone Clocks", "David Mitchell", "Science Fiction")
 
 book_list = [book_1, book_2, book_3, book_4, book_5]
 
-def delete_book(title, list=book_list):
-    for book in list:
-        if title == book.title:
-            list.remove(book)
+def delete_book(book, list=book_list):
+    list.remove(book)
 
 def delete_book_index(index, list=book_list):
     list.pop(index)

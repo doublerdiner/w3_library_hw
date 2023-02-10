@@ -3,8 +3,30 @@
 {%block content%}
 
 <section class="Book">
+    <p>Title: </p>
+    <p>{{book.title}}</p>
+    <p>Author: </p>
+    <p>{{book.author}}</p>
+    <p>Genre: </p>
+    <p>{{book.genre}}</p>
+    <p>Checked In / Out Status: </p>
+    <p>{{book.checked_out}}</p>
+    <p>Check In / Check Out Title:</p>
 
-<p>{{book.title}}</p>
+    <form action="/library/{{index}}" method="POST">
+        <label for="in">Check In:</label>    
+        <input type="radio" id="in" name="status" value="Check In"><br>
+        <label for="out">Check Out: </label>
+        <input type="radio" id="out" name="status" value="Check Out"><br>
+        <input type="submit">
+    </form>
+    
+    <p>Delete Title from the Library:</p>
+
+    <form action="/library/{{index}}/delete" method="POST">
+        <input type="Submit" value="Delete">
+    </form>
+
 
 
 </section>
