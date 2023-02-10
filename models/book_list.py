@@ -8,11 +8,20 @@ book_5 = Book("The Bone Clocks", "David Mitchell", "Science Fiction")
 
 book_list = [book_1, book_2, book_3, book_4, book_5]
 
-def delete_book():
-    pass
+def delete_book(title, list=book_list):
+    for book in list:
+        if title == book.title:
+            list.remove(book)
 
-def add_book():
-    pass
 
-def check_out_book():
-    pass
+def delete_book_index(index, list=book_list):
+    list.pop(index)
+
+def add_book(book, list=book_list):
+    list.append(book)
+
+def check_out_book(book):
+    book.checked_out = True
+
+def check_book_in(book):
+    book.checked_out = False
