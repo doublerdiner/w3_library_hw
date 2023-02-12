@@ -6,25 +6,23 @@
     <section>
         <h3>Books in the Library</h3>
         <div>
-        {%for book in book_list%}
         <table>
             <tr>
                 <th>Title </th>
                 <th>Author </th>
                 <th>Genre </th>
+                <th>Available? </th>
+                <th>Check In / Out Book</th>
+                <th>Due Date</th>
+                <th>Delete Book From Inventory</th>
+                <th>View This Book</th>
             </tr>
+            {%for book in book_list%}
             <tr>
                 <td>{{book.title}}</td>
                 <td>{{book.author}}</td>
                 <td>{{book.genre}}</td>
-            </tr>
-            <tr>
-                <th>Checked Out Status </th>
-                <th>Check In / Out Book</th>
-                <th>Delete Book From Inventory</th>
-            </tr>
-            <tr>
-                <td>{{book.checked_out}}</td>
+                <td>{%if book.checked_out%}&#10060;{%else%}&#9989;{%endif%}</td>
                 <td>
                     <form action="/library/{{loop.index0}}" method="POST">
                         <label for="in">Check In:</label>    
@@ -34,21 +32,20 @@
                         <input type="submit">
                     </form>
                 </td>
+                <td>{%if book.due_date == None%}N/A{%else%}{{book.due_date}}{%endif%}</td>
                 <td>
                     <form action="/library/{{loop.index0}}/delete" method="POST">
                         <input type="Submit" value="Delete">
                     </form>
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <form action="/library/{{loop.index0}}">
                         <input type="Submit" value="View This Book">
                     </form>
                 </td>
             </tr>
-        </table>
-        {%endfor%}       
+            {%endfor%} 
+        </table>     
         </div>
     </section>
     <section>

@@ -9,8 +9,8 @@
     <p>{{book.author}}</p>
     <p>Genre: </p>
     <p>{{book.genre}}</p>
-    <p>Checked In / Out Status: </p>
-    <p>{{book.checked_out}}</p>
+    <p>Available to check out?: </p>
+    <p>{%if book.checked_out%}&#10060;{%else%}&#9989;{%endif%}</p>
     <p>Check In / Check Out Title:</p>
 
     <form action="/library/{{index}}" method="POST">
@@ -20,6 +20,8 @@
         <input type="radio" id="out" name="status" value="Check Out"><br>
         <input type="submit">
     </form>
+
+    <p>Title to be returned by:</p>
     
     <p>Delete Title from the Library:</p>
 
