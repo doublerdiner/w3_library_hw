@@ -13,11 +13,11 @@
     <p>{%if book.checked_out%}&#10060;{%else%}&#9989;{%endif%}</p>
     <p>Check In / Check Out Title:</p>
 
-    <form action="/library/{{index}}" method="POST">
+    <form action="/library/{{book_list.index(book)}}" method="POST">
         <label for="in">Check In:</label>    
-        <input type="radio" id="in" name="status" value="Check In"><br>
+        <input type="radio" id="in" name="status" value="CheckIn" required><br>
         <label for="out">Check Out: </label>
-        <input type="radio" id="out" name="status" value="Check Out"><br>
+        <input type="radio" id="out" name="status" value="CheckOut"><br>
         <input type="submit">
     </form>
 

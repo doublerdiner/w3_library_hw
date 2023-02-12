@@ -26,7 +26,7 @@
                 <td>
                     <form action="/library/{{loop.index0}}" method="POST">
                         <label for="in">Check In:</label>    
-                        <input type="radio" id="in" name="status" value="CheckIn"><br>
+                        <input type="radio" id="in" name="status" value="CheckIn" required><br>
                         <label for="out">Check Out: </label>
                         <input type="radio" id="out" name="status" value="CheckOut"><br>
                         <input type="submit">
@@ -39,7 +39,7 @@
                     </form>
                 </td>
                 <td>
-                    <form action="/library/{{loop.index0}}">
+                    <form action="/library/viewbook/{{loop.index0}}">
                         <input type="Submit" value="View This Book">
                     </form>
                 </td>

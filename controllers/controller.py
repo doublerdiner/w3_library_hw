@@ -9,11 +9,11 @@ import datetime
 def index():
     return render_template("index.html", title="Home", book_list=library.book_list)
 
-@app.route("/library/<index>")
+@app.route("/library/viewbook/<index>")
 def book_view(index):
     index = int(index)
     book_to_view = library.book_list[index]
-    return render_template("book.html", title="Book", book=book_to_view, index=index)
+    return render_template("book.html", title="Book", book=book_to_view, index=index, book_list=library.book_list)
 
 @app.route("/library/<index>", methods=['POST'])
 def post_update_check_status(index):
@@ -22,7 +22,7 @@ def post_update_check_status(index):
     if request.form["status"] == "CheckIn":
         library.check_book_in(book_to_check_out)
         book_to_check_out.due_date = None
-    else:
+    elif request.form["status"] == "CheckOut":
         library.check_out_book(book_to_check_out)
         today = datetime.date.today()
         week = datetime.timedelta(days=7)
