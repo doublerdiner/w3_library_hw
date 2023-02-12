@@ -2,33 +2,54 @@
 
 {%block content%}
 
-<section class="Book">
-    <p>Title: </p>
-    <p>{{book.title}}</p>
-    <p>Author: </p>
-    <p>{{book.author}}</p>
-    <p>Genre: </p>
-    <p>{{book.genre}}</p>
-    <p>Available to check out?: </p>
-    <p>{%if book.checked_out%}&#10060;{%else%}&#9989;{%endif%}</p>
-    <p>Check In / Check Out Title:</p>
+<section class="book">
+    <aside class="aside"></aside>
+        <div class="middle">
+            <table class="booktable">
+                <tr>
+                    <th>Title: </th>
+                    <td>{{book.title}}</td>
+                </tr>
+                <tr>
+                    <th>Author: </th>
+                    <td>{{book.author}}</td>
+                </tr>
+                <tr>
+                    <th>Genre: </th>
+                    <td>{{book.genre}}</td>
+                </tr>
+                <tr>
+                    <th>Available to check out?: </th>
+                    <td>{%if book.checked_out%}&#10060;{%else%}&#9989;{%endif%}</td>
+                </tr>
+                <tr>
+                    <th>Check In / Check Out Title:</th>
+                    <td>
+                        <form action="/library/{{book_list.index(book)}}" method="POST">
+                            <label for="in">Check In:</label>    
+                            <input type="radio" id="in" name="status" value="CheckIn" required><br>
+                            <label for="out">Check Out: </label>
+                            <input type="radio" id="out" name="status" value="CheckOut"><br>
+                            <input type="submit">
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                <th>Title to be returned by:</th>
+                <td>{%if book.due_date == None%}N/A{%else%}{{book.due_date}}{%endif%}</td>
+                </tr>
+                <tr>
+                    <th>Delete Title from the Library:</th>
 
-    <form action="/library/{{book_list.index(book)}}" method="POST">
-        <label for="in">Check In:</label>    
-        <input type="radio" id="in" name="status" value="CheckIn" required><br>
-        <label for="out">Check Out: </label>
-        <input type="radio" id="out" name="status" value="CheckOut"><br>
-        <input type="submit">
-    </form>
-
-    <p>Title to be returned by:</p>
-    
-    <p>Delete Title from the Library:</p>
-
-    <form action="/library/{{index}}/delete" method="POST">
-        <input type="Submit" value="Delete">
-    </form>
-
+                    <td>
+                        <form action="/library/{{index}}/delete" method="POST">
+                            <input class="delete" type="Submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <aside class="aside"></aside>
 
 
 </section>
